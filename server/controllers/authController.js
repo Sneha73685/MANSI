@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const User = require('../models/user');
+const { User } = require('../models/user');  // Note the object destructuring
 
 const signIn = async (req, res) => {
     const { email, password } = req.body;
