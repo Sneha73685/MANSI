@@ -161,7 +161,6 @@ docker-compose up
 
 ## Future Enhancements
 * Group therapy sessions
-* AR/VR therapy options
 * Multi-language support
 * Mobile applications
 * Integration with wearable devices
