@@ -1,0 +1,92 @@
+/* Navbar Styling */
+#nav {
+    height: 100px;
+    width: 100%;
+    background-color: burlywood;
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+#nav-part1 {
+    cursor: pointer;
+}
+
+#nav-part1 span {
+    font-size: 80px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+#nav-part1 span:hover {
+    color: #666;
+}
+
+#nav-part2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+#links {
+    padding: 10px;
+}
+
+#nav-part2 #links a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0 20px;
+}
+
+#icons {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #F7F7F7;
+    color: #000000;
+}
+
+#nav-part2 #icons i {
+    font-size: 18px;
+    margin: 0 20px;
+}
+
+/* Main Content Styles */
+.container {
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.result-container {
+    width: 80%;
+    max-width: 600px;
+    padding: 2rem;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.result-container h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+#depressionLevel {
+    font-size: 1.6rem;
+    color: #555;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}

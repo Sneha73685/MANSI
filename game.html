@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mental Health Survey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        #nav {
+            background: burlywood;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav-part1 span {
+            font-size: 50px;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        #nav-part2 {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        #game {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .justify-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #hud {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        #progressBar {
+            width: 100%;
+            height: 10px;
+            border-radius: 50px;
+            background: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+
+        #progressBarFull {
+            height: 100%;
+            background: burlywood;
+            border-radius: 50px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-prompt {
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        #question {
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .choice-container {
+            display: flex;
+            margin-bottom: 1rem;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choice-container:hover {
+            border-color: burlywood;
+            background: #f8f9fa;
+        }
+
+        .choice-container.selected {
+            background-color: #e3f2fd;
+            border-color: burlywood;
+            transform: translateX(10px);
+        }
+
+        .choice-prefix {
+            padding: 1rem 1.5rem;
+            background: burlywood;
+            color: white;
+        }
+
+        .choice-text {
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .calendly-inline-widget {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            #links {
+                display: none;
+            }
+            
+            #icons {
+                display: block;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #icons {
+                display: none;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div id="nav-part1">
+            <a href="index.html" style="text-decoration: none;">
+                <span>&#9775;</span>
+            </a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href="consultation.html">Consultation</a>
+                <a href="signup.html">Signup / Login</a>
+            </div>
+            <div id="icons">
+                <i class="ri-menu-fill"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="game" class="justify-center flex-column">
+            <div id="hud">
+                <div id="hud-item">
+                    <p id="progressText" class="hud-prefix">Question</p>
+                    <div id="progressBar">
+                        <div id="progressBarFull"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="question-prompt">
+                Over the last 2 weeks, how often have you been bothered by any of the following problems?
+            </h3>
+
+            <h2 id="question"></h2>
+            
+            <div class="choice-container">
+                <p class="choice-prefix">A</p>
+                <p class="choice-text" data-number="1">Not at all</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">B</p>
+                <p class="choice-text" data-number="2">Several days</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">C</p>
+                <p class="choice-text" data-number="3">More than half the days</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">D</p>
+                <p class="choice-text" data-number="4">Nearly every day</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="calendly-inline-widget" data-url="https://calendly.com/sarthakrawat4980?primary_color=f8cf95" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <script>
+        const question = document.getElementById('question');
+        const choices = Array.from(document.getElementsByClassName('choice-text'));
+        const progressText = document.getElementById('progressText');
+        const progressBarFull = document.getElementById('progressBarFull');
+        let currentQuestion = {};
+        let acceptingAnswers = false;
+        let score = 0;
+        let questionCounter = 0;
+        const MAX_QUESTIONS = 9;
+
+        let questions = [];
+
+        fetch('questions.json')
+            .then((res) => res.json())
+            .then((loadedQuestions) => {
+                questions = loadedQuestions;
+                startSurvey();
+            })
+            .catch((err) => {
+                console.error(err);
+                // Fallback questions in case fetch fails
+                questions = [
+                    {
+                        question: "Little interest or pleasure in doing things?",
+                        choice1: "Not at all",
+                        choice2: "Several days",
+                        choice3: "More than half the days",
+                        choice4: "Nearly every day",
+                        weights: [0, 1, 2, 3]
+                    },
+                    {
+                        question: "Feeling down, depressed, or hopeless?",
+                        choice1: "Not at all",
+                        choice2: "Several days",
+                        choice3: "More than half the days",
+                        choice4: "Nearly every day",
+                        weights: [0, 1, 2, 3]
+                    },
+                    {
+                        question: "Trouble falling or staying asleep, or sleeping too much?",
+                        choice1: "Not at all",
+                        choice2: "Several days",
+                        choice3: "More than half the days",
+                        choice4: "Nearly every day",
+                        weights: [0, 1, 2, 3]
+                    },
+                    // Add more questions as needed
+                ];
+                startSurvey();
+            });
+
+        const startSurvey = () => {
+            questionCounter = 0;
+            score = 0;
+            getNewQuestion();
+        };
+
+        const getNewQuestion = () => {
+            if (questionCounter >= questions.length || questionCounter >= MAX_QUESTIONS) {
+                localStorage.setItem('mostRecentScore', score);
+                window.location.assign('/end.html');
+                return;
+            }
+
+            currentQuestion = questions[questionCounter];
+            questionCounter++;
+            progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+            progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+
+            question.innerText = currentQuestion.question;
+            choices.forEach((choice, index) => {
+                choice.innerText = currentQuestion[`choice${index + 1}`];
+            });
+
+            acceptingAnswers = true;
+        };
+
+        choices.forEach((choice) => {
+            choice.addEventListener('click', (e) => {
+                if (!acceptingAnswers) return;
+                acceptingAnswers = false;
+
+                const selectedChoice = e.target;
+                const selectedAnswerIndex = selectedChoice.dataset['number'] - 1;
+                const weight = currentQuestion.weights[selectedAnswerIndex];
+                incrementScore(weight);
+
+                selectedChoice.parentElement.classList.add('selected');
+                setTimeout(() => {
+                    selectedChoice.parentElement.classList.remove('selected');
+                    getNewQuestion();
+                }, 1000);
+            });
+        });
+
+        const incrementScore = (num) => {
+            score += num;
+        };
+    </script>
+</body>
+</html>

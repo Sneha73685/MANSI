@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mansi - The Mental Saviour</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: serif;
+        }
+
+        #nav {
+            height: 100px;
+            width: 100%;
+            background-color: burlywood;
+            position: fixed;
+            top: 0;
+            z-index: 99;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 25px;
+        }
+
+        #nav-part1 {
+            cursor: pointer;
+        }
+
+        #nav-part1 span {
+            font-size: 50px;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        #nav-part1 span:hover {
+            color: #666;
+        }
+
+        #nav-part2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        #links {
+            padding: 10px;
+        }
+
+        #nav-part2 #links a {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0 20px;
+        }
+
+        #icons {
+            padding: 10px;
+            border-radius: 50px;
+            background-color: #F7F7F7;
+        }
+
+        #nav-part2 #icons i {
+            font-size: 18px;
+            margin: 0 20px;
+            font-weight: 100;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E6D5C3;
+            padding: 20px;
+            padding-top: 120px; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .brand {
+            margin-bottom: 2rem;
+        }
+
+        .brand h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand h2 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-buttons {
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-button.active {
+            color: black;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: black;
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        .form {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            #nav {
+                flex-direction: column;
+                height: auto;
+            }
+
+            body {
+                padding-top: 180px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div id="nav-part1">
+            <a href="index.html" style="text-decoration: none;">
+                <span>&#9775;</span>
+            </a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href="game.html">Questionnaire</a>
+                <a href="consultation.html">Consultation</a>
+                <a href="signup.html">Signup / Login</a>
+            </div>
+            <div id="icons">
+                <i class="ri-menu-fill"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="brand">
+            <h1>MANSI</h1>
+            <h2>THE MENTAL</h2>
+            <h2>SAVIOUR</h2>
+        </div>
+        
+        <div class="form-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-form="signin">Sign In</button>
+                <button class="tab-button" data-form="signup">Sign Up</button>
+            </div>
+
+            <form id="signin-form" class="form active">
+                <div class="input-group">
+                    <label for="signin-email">Email</label>
+                    <input type="email" id="signin-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signin-password">Password</label>
+                    <input type="password" id="signin-password" required>
+                </div>
+                <button type="submit" class="submit-btn">Sign In</button>
+            </form>
+
+            <form id="signup-form" class="form">
+                <div class="input-group">
+                    <label for="signup-name">Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const forms = document.querySelectorAll('.form');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                forms.forEach(form => form.classList.remove('active'));
+
+                button.classList.add('active');
+                const formId = button.dataset.form + '-form';
+                document.getElementById(formId).classList.add('active');
+            });
+        });
+
+        const form = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                console.log('Form submitted:', data);
+            });
+        });
+    </script>
+</body>
+</html>
