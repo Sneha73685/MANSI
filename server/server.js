@@ -8,6 +8,8 @@ const appointmentRoutes = require('./routes/appointmentRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const privacyRoutes = require('./routes/privacyRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+const path = require("path");
 
 dotenv.config();
 
@@ -20,9 +22,18 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Failed to connect to MongoDB:', error));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+});
+app.get("/consultation.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "consultation.html"));
+});
+app.use(express.static(path.join(__dirname, "..", "client")));
+
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes); 
+app.use('/api/profile', profileRoutes);
 
 app.use('/api/professionals', professionalRoutes);
 app.use('/api/appointments', appointmentRoutes);

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation | Mental Health Web</title>
+    <link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/1499265096006000640/ZhEnSTch_400x400.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        #nav {
+            height: 100px;
+            width: 100%;
+            background-color: burlywood;
+            position: fixed;
+            z-index: 99;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 25px;
+        }
+
+        #nav-part1 {
+            cursor: pointer;
+        }
+
+        #nav-part1 span {
+            font-size: 50px;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        #nav-part1 span:hover {
+            color: #666;
+        }
+
+        #nav-part2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        #links {
+            padding: 10px;
+        }
+
+        #nav-part2 #links a {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0 20px;
+        }
+
+        #icons {
+            padding: 10px;
+            border-radius: 50px;
+            background-color: #F7F7F7;
+        }
+
+        #nav-part2 #icons i {
+            font-size: 18px;
+            margin: 0 20px;
+            font-weight: 100;
+        }
+
+        .content {
+            padding-top: 120px;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            color: #5a6e82;
+            margin-bottom: 2rem;
+        }
+
+        .psychiatrists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .psychiatrist-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .psychiatrist-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+
+        .psychiatrist-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .psychiatrist-specialty {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .communication-options {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .comm-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .call-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .video-btn {
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        .comm-button:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            #nav {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .psychiatrist-card {
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="nav-part1">
+            <a href="index.html" style="text-decoration: none;">
+                <span>&#9775;</span>
+            </a>
+        </div>
+        <div id="nav-part2">
+            <div id="links">
+                <a href="#">Diagnosis</a>
+                <a href="consultation.html">Consultation</a>
+                <a href="signup.html">Signup / Login</a>
+            </div>
+            <div id="icons">
+                <i class="ri-menu-fill"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Our Mental Health Specialists</h1>
+        <div class="psychiatrists-grid">
+            <!-- Psychiatrist 1 -->
+            <div class="psychiatrist-card">
+                <img src="/api/placeholder/150/150" alt="Dr. Sarah Johnson" class="profile-image">
+                <h2 class="psychiatrist-name">Dr. Sarah Johnson</h2>
+                <p class="psychiatrist-specialty">Clinical Psychiatrist</p>
+                <p>Specializing in anxiety and depression treatment with 10+ years of experience.</p>
+                <div class="communication-options">
+                    <button class="comm-button chat-btn">
+                        <i class="ri-message-3-line"></i>
+                        Chat
+                    </button>
+                    <button class="comm-button call-btn">
+                        <i class="ri-phone-line"></i>
+                        Call
+                    </button>
+                    <button class="comm-button video-btn">
+                        <i class="ri-video-chat-line"></i>
+                        Video
+                    </button>
+                </div>
+            </div>
+
+            <!-- Psychiatrist 2 -->
+            <div class="psychiatrist-card">
+                <img src="/api/placeholder/150/150" alt="Dr. Michael Chen" class="profile-image">
+                <h2 class="psychiatrist-name">Dr. Michael Chen</h2>
+                <p class="psychiatrist-specialty">Child Psychiatrist</p>
+                <p>Expert in child and adolescent mental health with a focus on ADHD and autism.</p>
+                <div class="communication-options">
+                    <button class="comm-button chat-btn">
+                        <i class="ri-message-3-line"></i>
+                        Chat
+                    </button>
+                    <button class="comm-button call-btn">
+                        <i class="ri-phone-line"></i>
+                        Call
+                    </button>
+                    <button class="comm-button video-btn">
+                        <i class="ri-video-chat-line"></i>
+                        Video
+                    </button>
+                </div>
+            </div>
+
+            <!-- Psychiatrist 3 -->
+            <div class="psychiatrist-card">
+                <img src="/api/placeholder/150/150" alt="Dr. Emily Rodriguez" class="profile-image">
+                <h2 class="psychiatrist-name">Dr. Emily Rodriguez</h2>
+                <p class="psychiatrist-specialty">Addiction Specialist</p>
+                <p>Specialized in addiction recovery and substance abuse treatment approaches.</p>
+                <div class="communication-options">
+                    <button class="comm-button chat-btn">
+                        <i class="ri-message-3-line"></i>
+                        Chat
+                    </button>
+                    <button class="comm-button call-btn">
+                        <i class="ri-phone-line"></i>
+                        Call
+                    </button>
+                    <button class="comm-button video-btn">
+                        <i class="ri-video-chat-line"></i>
+                        Video
+                    </button>
+                </div>
+            </div>
+
+            <!-- Psychiatrist 4 -->
+            <div class="psychiatrist-card">
+                <img src="/api/placeholder/150/150" alt="Dr. James Wilson" class="profile-image">
+                <h2 class="psychiatrist-name">Dr. James Wilson</h2>
+                <p class="psychiatrist-specialty">Trauma Specialist</p>
+                <p>Expert in PTSD and trauma recovery with holistic treatment approaches.</p>
+                <div class="communication-options">
+                    <button class="comm-button chat-btn">
+                        <i class="ri-message-3-line"></i>
+                        Chat
+                    </button>
+                    <button class="comm-button call-btn">
+                        <i class="ri-phone-line"></i>
+                        Call
+                    </button>
+                    <button class="comm-button video-btn">
+                        <i class="ri-video-chat-line"></i>
+                        Video
+                    </button>
+                </div>
+            </div>
+           <!-- Psychiatrist 5 -->
+           <div class="psychiatrist-card">
+            <img src="/api/placeholder/150/150" alt="Dr. Lisa Patel" class="profile-image">
+            <h2 class="psychiatrist-name">Dr. Lisa Patel</h2>
+            <p class="psychiatrist-specialty">Geriatric Psychiatrist</p>
+            <p>Specialized in elderly mental health care and dementia management with 15+ years experience.</p>
+            <div class="communication-options">
+                <button class="comm-button chat-btn">
+                    <i class="ri-message-3-line"></i>
+                    Chat
+                </button>
+                <button class="comm-button call-btn">
+                    <i class="ri-phone-line"></i>
+                    Call
+                </button>
+                <button class="comm-button video-btn">
+                    <i class="ri-video-chat-line"></i>
+                    Video
+                </button>
+            </div>
+        </div>
+
+        <!-- Psychiatrist 6 -->
+        <div class="psychiatrist-card">
+            <img src="/api/placeholder/150/150" alt="Dr. Marcus Thompson" class="profile-image">
+            <h2 class="psychiatrist-name">Dr. Marcus Thompson</h2>
+            <p class="psychiatrist-specialty">OCD & Anxiety Specialist</p>
+            <p>Expert in treating OCD, panic disorders, and severe anxiety conditions using evidence-based approaches.</p>
+            <div class="communication-options">
+                <button class="comm-button chat-btn">
+                    <i class="ri-message-3-line"></i>
+                    Chat
+                </button>
+                <button class="comm-button call-btn">
+                    <i class="ri-phone-line"></i>
+                    Call
+                </button>
+                <button class="comm-button video-btn">
+                    <i class="ri-video-chat-line"></i>
+                    Video
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
