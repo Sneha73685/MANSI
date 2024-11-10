@@ -1,0 +1,74 @@
+[
+    {
+      "question": "Little interest or pleasure in doing things",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day",
+      "weights": [0,1,2,3]
+    },
+    {
+      "question": "Feeling down, depressed, or hopeless",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day",
+      "weights": [0,1,2,3]
+    },
+    {
+      "question": "Trouble falling or staying asleep, or sleeping too much",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day",
+      "weights": [0,1,2,3]
+    },
+    {
+        "question": "Feeling tired or having little energy",
+        "choice1": "Not at all",
+        "choice2": "Several days",
+        "choice3": "More than half the days",
+        "choice4": "Nearly every day",
+        "weights": [0,1,2,3]
+      },
+      {
+        "question": "Poor appetite or overeating",
+        "choice1": "Not at all",
+        "choice2": "Several days",
+        "choice3": "More than half the days",
+        "choice4": "Nearly every day",
+        "weights": [0,1,2,3]
+      },
+      {
+        "question": "Feeling bad about yourself or that you are a failure or have let yourself or your family down",
+        "choice1": "Not at all",
+        "choice2": "Several days",
+        "choice3": "More than half the days",
+        "choice4": "Nearly every day",
+        "weights": [0,1,2,3]
+      },
+      {
+        "question": "Trouble concentrating on things, such as reading the newspaper or watching television",
+        "choice1": "Not at all",
+        "choice2": "Several days",
+        "choice3": "More than half the days",
+        "choice4": "Nearly every day",
+        "weights": [0,1,2,3]
+      },
+      {
+        "question": "Moving or speaking so slowly that other people could have noticed. Or the opposite being so figety or restless that you have been moving around a lot more than usual",
+        "choice1": "Not at all",
+        "choice2": "Several days",
+        "choice3": "More than half the days",
+        "choice4": "Nearly every day",
+        "weights": [0,1,2,3]
+      },
+      {
+        "question": "Thoughts that you would be better off dead, or of hurting yourself",
+        "choice1": "Not at all",
+        "choice2": "Several days",
+        "choice3": "More than half the days",
+        "choice4": "Nearly every day",
+        "weights": [0,1,2,3]
+      }
+  ]
