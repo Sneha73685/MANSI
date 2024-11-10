@@ -28,9 +28,9 @@ body {
 }
 
 #nav {
-    /* height: 100px; */
+    height: 100px; 
     width: 100%;
-    /* background-color: burlywood; */
+    background-color: burlywood;
     position: fixed;
     z-index: 99;
     display: flex;
@@ -38,12 +38,15 @@ body {
     justify-content: space-between;
     padding: 25px;
 }
-
+#nav-part1 span {
+    font-size: 50px; /* Adjust this value as needed */
+}
 #nav #nav-part2 {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 40px;
+    
 }
 
 #links {
@@ -103,7 +106,7 @@ body {
 }
 
 #page1 h1 {
-    font-size: 15.8vw;
+    font-size: 12vw;
     text-transform: uppercase;
     font-family: futura;
     line-height: 14vw;
@@ -167,14 +170,39 @@ body {
 }
 
 #page2 .elem .dets {
-    height: 60px;
-    border-radius: 50px;
-    width: 70%;
     position: absolute;
-    z-index: 9;
-    background-color: rgb(229, 156, 186);
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: white; /* Adjust text color for visibility */
+    font-size: 1.5em; /* Adjust font size as needed */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional background for better readability */
+    padding: 10px;
+    border-radius: 5px;
+}
+#page2 .elem .dets:hover{
+    height: 200px;
+}
+#page2 .elem .dets .link-list {
+    margin-top: 10px;
+    font-size: 0.9em;
+    list-style-type: disc;
+    padding-left: 20px; /* Align bullets */
+    text-align: left;
+}
 
+.link-list li {
+    margin: 5px 0;
+}
 
+.link-list a {
+    color: white;
+    text-decoration: none;
+}
+
+.link-list a:hover {
+    text-decoration: underline ;
 }
 
 #page3 {
@@ -267,8 +295,8 @@ body {
     }
 
     #page1 h1 {
-        font-size: 15.5vw;
-        letter-spacing: -3px;
+        font-size: 1vw;
+        letter-spacing: -2px;
     }
 
     #video-container {
@@ -344,3 +372,5 @@ body {
     }
 
 }
+
+
